@@ -5,6 +5,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+//  Fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
@@ -51,3 +54,35 @@
 // Utilities
 @import "utilities/api";
 // scss-docs-end import-stack
+
+// my-style
+.brand-text-icon {
+	font-size: 26px;
+	font-weight: 500;
+	font-family: "Poppins", sans-serif;
+	color: $primary;
+	&:hover {
+		color: $primary;
+	}
+}
+
+.navbar {
+	border-bottom: 1px solid $gray-200;
+	.nav-link {
+		&.active {
+			a {
+				color: $primary;
+			}
+		}
+
+		a {
+			color: $gray-900;
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
