@@ -4,14 +4,14 @@ import { useLocation } from "react-router-dom";
 import BrandIcon from "./IconText";
 import Button from "components/Button";
 
-export default function Header(props) {
+export default function Header() {
 	const location = useLocation();
 	const getNavLinkClass = (path) => {
 		return location.pathname === path ? "active" : "";
 	};
 
 	return (
-		<Navbar bg="none" expand="lg">
+		<Navbar expand="lg">
 			<Container>
 				<Navbar.Brand href="#home">
 					<BrandIcon />

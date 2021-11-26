@@ -8,9 +8,7 @@ export default function Button(props) {
 	if (props.isPrimary) className.push("btn-primary");
 	if (props.isLarge) className.push("btn-lg");
 	if (props.isSmall) className.push("btn-sm");
-	if (props.isBlock) className.push("btn-block");
-	if (props.hasShadow) className.push("btn-shadow");
-
+	if (props.hasShadow) className.push("shadow");
 	const onClick = () => {
 		if (props.onClick) props.onClick();
 	};
@@ -33,12 +31,30 @@ export default function Button(props) {
 
 	if (props.type === "link") {
 		if (props.isExternal) {
+			if (props.isBlock) {
+				return (
+					<div class="d-grid gap-2">
+						<a href={props.href} className={className.join(" ")} style={props.style} target={props.target === "_blank" ? "_blank" : undefined} rel={props.target === "_blank" ? "noopener noreferrer" : undefined}>
+							{props.children}
+						</a>
+					</div>
+				);
+			}
 			return (
 				<a href={props.href} className={className.join(" ")} style={props.style} target={props.target === "_blank" ? "_blank" : undefined} rel={props.target === "_blank" ? "noopener noreferrer" : undefined}>
 					{props.children}
 				</a>
 			);
 		} else {
+			if (props.isBlock) {
+				return (
+					<div class="d-grid gap-2">
+						<Link to={props.href} className={className.join(" ")} style={props.style} onClick={onClick}>
+							{props.children}
+						</Link>
+					</div>
+				);
+			}
 			return (
 				<Link to={props.href} className={className.join(" ")} style={props.style} onClick={onClick}>
 					{props.children}
@@ -47,6 +63,15 @@ export default function Button(props) {
 		}
 	}
 
+	if (props.isBlock) {
+		return (
+			<div class="d-grid gap-2">
+				<button className={className.join(" ")} style={props.style} onClick={onClick}>
+					{props.children}
+				</button>
+			</div>
+		);
+	}
 	return (
 		<button className={className.join(" ")} style={props.style} onClick={onClick}>
 			{props.children}
